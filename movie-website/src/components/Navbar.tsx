@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       {/* Logo */}
-      <div className="navbar-logo">Game Hub</div>
+      <div className="navbar-logo">Movie Hub</div>
 
       {/* Hamburger Menu */}
       <div className="hamburger" onClick={toggleMenu}>
