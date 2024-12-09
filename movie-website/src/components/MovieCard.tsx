@@ -27,6 +27,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         />
         <h3>{movie.title}</h3>
         <p>{new Date(movie.release_date).getFullYear()}</p>
+
       </div>
 
       {/* Modal */}

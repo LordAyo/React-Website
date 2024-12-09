@@ -7,19 +7,33 @@ interface GenreFilterProps {
   onSelectGenre: (genreId: number | null) => void;
 }
 
-const GenreFilter: React.FC<GenreFilterProps> = ({ genres, selectedGenre, onSelectGenre }) => (
-  <div className="genre-filter">
-    <button onClick={() => onSelectGenre(null)}>All</button>
-    {genres.map((genre) => (
+const GenreFilter: React.FC<GenreFilterProps> = ({
+  genres,
+  selectedGenre,
+  onSelectGenre,
+}) => {
+  return (
+    <div className="genre-filter">
+      {/* All Button */}
       <button
-        key={genre.id}
-        className={selectedGenre === genre.id ? "active" : ""}
-        onClick={() => onSelectGenre(genre.id)}
+        className={selectedGenre === null ? "active" : ""}
+        onClick={() => onSelectGenre(null)} // Set to null for "All"
       >
-        {genre.name}
+        All
       </button>
-    ))}
-  </div>
-);
+
+      {/* Genre Buttons */}
+      {genres.map((genre) => (
+        <button
+          key={genre.id}
+          className={selectedGenre === genre.id ? "active" : ""}
+          onClick={() => onSelectGenre(genre.id)}
+        >
+          {genre.name}
+        </button>
+      ))}
+    </div>
+  );
+};
 
 export default GenreFilter;

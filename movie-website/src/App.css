@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cartoon+Queen&display=swap');
+
+
+* {
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   background-color: #f0f0f0;
 }
 
@@ -12,7 +20,8 @@ body {
 
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* Adjust card width */
   gap: 1rem;
   margin-top: 1rem;
 }
@@ -21,13 +30,14 @@ button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
-  background-color: #6cc832;
+  background-color: #3f51b5;
   color: white;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #5ab02d;
+  background-color: #0629f4;
+  font-weight: 600;
 }
 
 button:disabled {
@@ -42,6 +52,7 @@ button:disabled {
 }
 
 .movie-card {
+  height: 380px;
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
@@ -94,7 +105,7 @@ button:disabled {
 }
 
 .genre-filter button.active {
-  background-color: #6cc832;
+  background-color: #3f51b5;
   color: white;
 }
 
@@ -121,7 +132,7 @@ button:disabled {
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 5px;
-  width: 300px;
+  width: 200px;
 }
 
 .search-bar button {
@@ -239,38 +250,52 @@ button:disabled {
   margin-bottom: 0.5rem;
 }
 
-/* Modal Styles */
-.movie-modal {
-  position: relative;
-  background-color: white;
-  max-width: 600px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
+/* ============================
+   Modal
+   ============================ */
 .movie-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  /* Dark overlay behind the modal */
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2000;
+  /* Ensures modal is above the navbar */
 }
 
-.movie-modal-content img {
+.movie-modal {
+  background-color: white;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  /* Responsive width */
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 3000;
+  /* Modal content is above the overlay */
+  position: relative;
+  overflow: auto;
+}
+
+.movie-modal img {
   width: 100%;
   border-radius: 10px;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
-.movie-modal-content p {
-  margin: 0.5rem 0;
-  line-height: 1.5;
+.movie-modal h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.movie-modal p {
+  margin: 1rem 0;
+  line-height: 1.6;
 }
 
 .close-modal-button {
@@ -280,8 +305,9 @@ button:disabled {
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #333;
   cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
 }
 
 .close-modal-button:hover {
@@ -314,13 +340,15 @@ button:disabled {
   display: inline-block;
   padding: 0.5rem 1rem;
   text-decoration: none;
-  color: #3f51b5; /* Primary Color */
+  color: #3f51b5;
+  /* Primary Color */
   transition: background-color 0.2s, color 0.2s;
   cursor: pointer;
 }
 
 .pagination-link:hover {
-  background-color: #3f51b5; /* Primary Color */
+  background-color: #3f51b5;
+  /* Primary Color */
   color: white;
 }
 
@@ -334,13 +362,15 @@ button:disabled {
 
 .pagination-previous:hover,
 .pagination-next:hover {
-  background-color: #3f51b5; /* Primary Color */
+  background-color: #3f51b5;
+  /* Primary Color */
   color: white;
 }
 
 /* Active Page */
 .pagination-active .pagination-link {
-  background-color: #3f51b5; /* Primary Color */
+  background-color: #3f51b5;
+  /* Primary Color */
   color: white;
   font-weight: bold;
 }
@@ -353,50 +383,88 @@ button:disabled {
 
 
 
-/* Navbar Container */
+/* ============================
+   Global Styles
+   ============================ */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================
+     Navbar
+     ============================ */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #3f51b5; /* Blue */
+  background-color: #3f51b5;
   color: white;
   font-size: 1.2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: background-color 0.3s ease-in-out;
+  margin-bottom: 50px;
 }
 
-/* Logo */
 .navbar-logo {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: 'Cartoon Queen', Arial, sans-serif;
+  color: #ffffff;
 }
 
-/* Links Container */
 .navbar-links {
   display: flex;
-  list-style: none;
   gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-links li {
   font-weight: 500;
 }
 
+/* Navbar Links */
 .navbar-links a {
-  text-decoration: none;
+  position: relative;
+  text-decoration: none; /* Remove default underline */
   color: white;
-  transition: color 0.2s;
+  transition: color 0.3s ease, font-weight 0.3s ease; /* Smooth text color and weight transition */
+}
+
+/* Add underline with space using pseudo-element */
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; 
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #eba91a; 
+  transition: width 0.3s ease;
+}
+
+/* Hover Effect */
+.navbar-links a:hover::after {
+  width: 100%;
 }
 
 .navbar-links a:hover {
-  color: #ddd;
+  color: #eba91a; 
+  font-weight: 700; 
 }
 
-/* Dark Mode Toggle */
+
 .navbar-toggle {
   background-color: white;
   color: #3f51b5;
@@ -405,31 +473,84 @@ button:disabled {
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-toggle:hover {
-  background-color: #e0e7ff; /* Light Blue */
+  background-color: #eba91a;
+  font-weight: bold;
   color: #3f51b5;
 }
 
-/* Dark Mode */
+.navbar-toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  /* Slight shadow for separation */
+}
+
+/* ============================
+     Dark Mode
+     ============================ */
 body.dark-mode {
   background-color: #121212;
-  color: #eaeaea;
+  /* Dark background */
+  /* Light text */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode .navbar {
   background-color: #333;
+  /* Dark navbar background */
+  color: #eaeaea;
+  /* Light text for navbar */
+}
+
+body.dark-mode .navbar-logo {
   color: #eaeaea;
 }
 
 body.dark-mode .navbar-links a {
   color: #eaeaea;
+  /* Light text for links */
+}
+
+body.dark-mode .navbar-links a:hover {
+  color: #ddd;
+  /* Slightly lighter hover effect */
+}
+
+body.dark-mode .navbar-toggle-container {
+  background-color: #444;
+  /* Dark toggle container */
+  box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
+  /* Subtle shadow */
 }
 
 body.dark-mode .navbar-toggle {
-  background-color: #333;
-  color: #eaeaea;
+  background-color: #666;
+  color: #cccbcb;
 }
 
+body.dark-mode .navbar-toggle:hover {
+  color: #f5c518;
+  /* Accent yellow for hover */
+}
+
+/* ============================
+     Utility Classes
+     ============================ */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
