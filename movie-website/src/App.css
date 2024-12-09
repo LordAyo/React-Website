@@ -1,30 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cartoon+Queen&display=swap');
 
-
+/* Base Styles */
 * {
+  margin: 0;
+  box-sizing: border-box;
   font-family: 'Poppins', Arial, sans-serif;
 }
 
 body {
-  margin: 0;
   font-family: 'Poppins', Arial, sans-serif;
   background-color: #f0f0f0;
+  color: #333;
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Container Styles */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
 }
 
-.movie-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
+/* Generic Button Styles */
 button {
   padding: 0.5rem 1rem;
   border: none;
@@ -44,19 +43,26 @@ button:disabled {
   cursor: not-allowed;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0.5rem;
-  }
+/* Movie Card Styles */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .movie-card {
-  height: 380px;
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .movie-card:hover {
@@ -65,12 +71,29 @@ button:disabled {
 
 .movie-card img {
   width: 100%;
-  height: auto;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
 }
 
 .movie-card h3 {
   font-size: 1rem;
   margin: 0.5rem;
+  color: #333;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2.4em;
+  line-height: 1.2;
 }
 
 .movie-card p {
@@ -79,17 +102,36 @@ button:disabled {
   color: #555;
 }
 
-@media (max-width: 480px) {
-  .movie-card h3 {
-    font-size: 0.9rem;
-  }
+.movie-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  .movie-card p {
-    font-size: 0.8rem;
-  }
+.watchlist-button {
+  margin-top: 8px;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.watchlist-button.in-watchlist {
+  background-color: #f44336;
+}
+
+.watchlist-button:hover {
+  opacity: 0.9;
 }
 
 
+
+/* Genre Filter Styles */
 .genre-filter {
   display: flex;
   flex-wrap: wrap;
@@ -108,17 +150,7 @@ button:disabled {
   color: white;
 }
 
-@media (max-width: 480px) {
-  .genre-filter {
-    gap: 0.3rem;
-  }
-
-  .genre-filter button {
-    font-size: 0.8rem;
-  }
-}
-
-
+/* Search Bar Styles */
 .search-bar {
   display: flex;
   gap: 0.5rem;
@@ -138,16 +170,12 @@ button:disabled {
   padding: 0.5rem 1rem;
 }
 
-@media (max-width: 480px) {
-  .search-bar input {
-    width: 200px;
-  }
-
-  .search-bar button {
-    font-size: 0.9rem;
-  }
+/*  Pagination Styles */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
 }
-
 
 .pagination {
   display: flex;
@@ -155,6 +183,8 @@ button:disabled {
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
+  list-style: none;
+  padding: 0;
 }
 
 .pagination button {
@@ -167,41 +197,80 @@ button:disabled {
   color: #555;
 }
 
-@media (max-width: 480px) {
-  .pagination {
-    flex-wrap: wrap;
-    gap: 0.3rem;
-    justify-content: center;
-    font-size: 0.9rem;
-  }
-
-  .pagination button,
-  .pagination span {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
-
-  .pagination button {
-    width: auto;
-  }
-
-  .pagination span {
-    display: none;
-  }
-
-  .pagination-container {
-    padding: 0.5rem;
-  }
+.pagination-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
+.pagination-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #3f51b5;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+}
 
+.pagination-link:hover {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.pagination-previous,
+.pagination-next {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.pagination-previous:hover,
+.pagination-next:hover {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.pagination-active .pagination-link {
+  background-color: #3f51b5;
+  color: white;
+  font-weight: bold;
+}
+
+.pagination-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Home Container Styles */
 .home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.about-section {
+  text-align: center;
+  background-color: #3f51b5;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 20px;
+}
 
+.about-title {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.about-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #fff;
+  margin: 0 auto;
+}
+
+/* Movie Details Styles */
 .movie-details {
   display: flex;
   flex-direction: column;
@@ -229,45 +298,7 @@ button:disabled {
   text-align: justify;
 }
 
-@media (max-width: 480px) {
-  .movie-details img {
-    width: 200px;
-  }
-
-  .movie-details h2 {
-    font-size: 1.2rem;
-  }
-
-  .movie-details p {
-    font-size: 0.9rem;
-  }
-}
-
-/* Movie Card */
-.movie-card {
-  background-color: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.movie-card:hover {
-  transform: scale(1.05);
-}
-
-.movie-card img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 0.5rem;
-}
-
-/* ============================
-   Modal
-   ============================ */
+/* Modal Styles */
 .movie-modal-overlay {
   position: fixed;
   top: 0;
@@ -275,7 +306,6 @@ button:disabled {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  /* Dark overlay behind the modal */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -287,11 +317,9 @@ button:disabled {
   border-radius: 10px;
   max-width: 600px;
   width: 90%;
-  /* Responsive width */
   padding: 2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 3000;
-  /* Modal content is above the overlay */
   position: relative;
   overflow: auto;
 }
@@ -328,89 +356,7 @@ button:disabled {
   color: red;
 }
 
-/* Pagination Container */
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-/* Pagination List */
-.pagination {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  gap: 0.5rem;
-}
-
-/* Pagination Items */
-.pagination-item {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.pagination-link {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  color: #3f51b5;
-  /* Primary Color */
-  transition: background-color 0.2s, color 0.2s;
-  cursor: pointer;
-}
-
-.pagination-link:hover {
-  background-color: #3f51b5;
-  /* Primary Color */
-  color: white;
-}
-
-/* Previous and Next Buttons */
-.pagination-previous,
-.pagination-next {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.pagination-previous:hover,
-.pagination-next:hover {
-  background-color: #3f51b5;
-  /* Primary Color */
-  color: white;
-}
-
-/* Active Page */
-.pagination-active .pagination-link {
-  background-color: #3f51b5;
-  /* Primary Color */
-  color: white;
-  font-weight: bold;
-}
-
-/* Disabled Items */
-.pagination-disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-
-
-/* ============================
-   Global Styles
-   ============================ */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* ============================
-     Navbar
-     ============================ */
+/* Navbar Styles */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -423,7 +369,7 @@ body {
   top: 0;
   z-index: 1000;
   transition: background-color 0.3s ease-in-out;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .navbar-logo {
@@ -493,7 +439,6 @@ body {
   background-color: #00BCD4;
 }
 
-
 .navbar-toggle {
   background-color: white;
   color: #6159ee;
@@ -530,7 +475,6 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-/* Hamburger animation classes */
 .line.open:nth-child(1) {
   transform: rotate(45deg) translate(8px, 8px);
 }
@@ -543,152 +487,16 @@ body {
   transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* Menu container for mobile */
 .menu {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-@media screen and (max-width: 768px) {
-  .hamburger {
-    display: flex;
-    z-index: 1001;
-  }
-
-  .menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 250px;
-    background-color: #3f51b5;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    transition: right 0.3s ease-in-out;
-  }
-
-  .menu.open {
-    right: 0;
-  }
-
-  .navbar{
-    margin-bottom: 20px;
-  }
-
-  .navbar-links {
-    position: static;
-    flex-direction: column;
-    transform: none;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .navbar-links li {
-    margin: 1rem 0;
-  }
-
-  .navbar-toggle {
-    margin: 0 auto;
-  }
-}
-
-/* Dark mode styles */
-.dark-mode .navbar {
-  background-color: #1a237e;
-}
-
-.dark-mode .navbar-toggle {
-  background-color: #303f9f;
-  color: white;
-}
-
-.dark-mode .navbar-toggle:hover {
-  background-color: #00BCD4;
-  color: #1a237e;
-}
-
-
-/* ============================
-     Dark Mode
-     ============================ */
-body.dark-mode {
-  background-color: #121212;
-  /* Dark background */
-  /* Light text */
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.dark-mode .navbar {
-  background-color: #333;
-  /* Dark navbar background */
-  color: #eaeaea;
-  /* Light text for navbar */
-}
-
-body.dark-mode .navbar-logo {
-  color: #eaeaea;
-}
-
-body.dark-mode .navbar-links a {
-  color: #eaeaea;
-  /* Light text for links */
-}
-
-body.dark-mode .navbar-links a:hover {
-  color: #ddd;
-  /* Slightly lighter hover effect */
-}
-
-body.dark-mode .navbar-toggle-container {
-  background-color: #444;
-  /* Dark toggle container */
-  box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
-  /* Subtle shadow */
-}
-
-body.dark-mode .navbar-toggle {
-  background-color: #666;
-  color: #cccbcb;
-}
-
-body.dark-mode .navbar-toggle:hover {
-  color: #f5c518;
-  /* Accent yellow for hover */
-}
-
-/* ============================
-     Utility Classes
-     ============================ */
-.hidden {
-  display: none;
-}
-
-.visible {
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .movie-card {
-    height: 330px;
-  }
-
-  .movie-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-}
+/* Filter Styles */
 .discover-page {
   text-align: center;
   padding: 20px;
-}
-
-.page-title {
-  text-align: center;
-  font-size: 2rem;
-  color: #3f51b5;
-  margin-bottom: 20px;
 }
 
 .filters {
@@ -716,42 +524,6 @@ body.dark-mode .navbar-toggle:hover {
   box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
 }
 
-.movies-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.movie-card {
-  background: white;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.movie-card:hover {
-  transform: scale(1.05);
-}
-
-.movie-card img {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.movie-card h3 {
-  font-size: 1rem;
-  color: #333;
-  margin: 0;
-}
-
-.movie-card p {
-  font-size: 0.9rem;
-  color: #777;
-}
-
 .intro-text {
   font-size: 1.1rem;
   color: #555;
@@ -760,3 +532,352 @@ body.dark-mode .navbar-toggle:hover {
   text-align: center;
 }
 
+/* Utility Classes */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+/* Watchlist */
+.watchlist-button {
+  margin-top: 8px;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.watchlist-button.in-watchlist {
+  background-color: #f44336;
+}
+
+.watchlist-button:hover {
+  opacity: 0.9;
+}
+
+.empty-watchlist {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.empty-watchlist h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.empty-watchlist p {
+  color: #666;
+}
+
+.watchlist-item {
+  position: relative;
+}
+
+.remove-button {
+  width: 100%;
+  margin-top: 8px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Dark mode styles */
+body.dark-mode .empty-watchlist {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode .empty-watchlist h2 {
+  color: #fff;
+}
+
+body.dark-mode .empty-watchlist p {
+  color: #ccc;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #444;
+  color: #eaeaea;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .navbar {
+  background-color: #1a237e;
+}
+
+.dark-mode .navbar-toggle {
+  background-color: #303f9f;
+  color: white;
+}
+
+.dark-mode .navbar-toggle:hover {
+  background-color: #00BCD4;
+  color: #1a237e;
+}
+
+.dark-mode .navbar-logo {
+  color: #eaeaea;
+}
+
+.dark-mode .navbar-links a {
+  color: #eaeaea;
+}
+
+.dark-mode .navbar-links a:hover {
+  color: #ddd;
+}
+
+.dark-mode .navbar-toggle-container {
+  background-color: #444;
+  box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .navbar-toggle {
+  background-color: #1f1f1f;
+  color: #fff;
+}
+
+.dark-mode .navbar-toggle:hover {
+  color: #f5c518;
+}
+
+/* Dark Mode Styles for Cards */
+body.dark-mode .movie-card {
+  background-color: #1f1f1f;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .movie-card h3 {
+  color: #ffffff;
+}
+
+body.dark-mode .movie-card p {
+  color: #b3b3b3;
+}
+
+/* Dark Mode for Modal */
+body.dark-mode .movie-modal {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+
+body.dark-mode .movie-modal p {
+  color: #b3b3b3;
+}
+
+body.dark-mode .close-modal-button {
+  color: #ffffff;
+}
+
+body.dark-mode .close-modal-button:hover {
+  color: #ff4444;
+}
+
+/* Dark Mode for Watchlist Button */
+body.dark-mode .watchlist-button {
+  background-color: #2d3748;
+  color: #ffffff;
+}
+
+body.dark-mode .watchlist-button:hover {
+  background-color: #3f51b5;
+}
+
+body.dark-mode .watchlist-button.in-watchlist {
+  background-color: #c53030;
+}
+
+body.dark-mode .watchlist-button.in-watchlist:hover {
+  background-color: #9b2c2c;
+}
+
+/* Dark Mode for Empty Watchlist State */
+body.dark-mode .empty-watchlist {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode .empty-watchlist h2 {
+  color: #ffffff;
+}
+
+body.dark-mode .empty-watchlist p {
+  color: #b3b3b3;
+}
+
+
+/* All Media Queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+
+  .about-section {
+    padding: 15px;
+    margin: 10px 10px 1rem 10px;
+    border-radius: 10px;
+  }
+
+  .about-title {
+    font-size: 1.3rem;
+  }
+
+  .about-description {
+    font-size: 10px;
+    line-height: 1.4;
+    padding: 0 5px;
+  }
+
+  .movie-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 15px;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+    padding: 0 10px;
+  }
+
+  .filters select,
+  .filters input {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  /* Navbar Mobile Styles */
+  .hamburger {
+    display: flex;
+    z-index: 1001;
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 250px;
+    background-color: #3f51b5;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    transition: right 0.3s ease-in-out;
+  }
+
+  .menu.open {
+    right: 0;
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+  }
+
+  .navbar-logo {
+    font-size: 1.5rem;
+  }
+
+  .navbar-links {
+    position: static;
+    flex-direction: column;
+    transform: none;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .navbar-links li {
+    margin: 1rem 0;
+  }
+
+  .navbar-toggle {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .movie-card img {
+    height: 100%;
+  }
+  
+  .movie-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .movie-card p {
+    font-size: 0.8rem;
+  }
+
+  .genre-filter {
+    gap: 0.3rem;
+  }
+
+  .genre-filter button {
+    font-size: 0.8rem;
+  }
+
+  .search-bar input {
+    width: 200px;
+  }
+
+  .search-bar button {
+    font-size: 0.9rem;
+  }
+
+  .movie-details img {
+    width: 200px;
+  }
+
+  .movie-details h2 {
+    font-size: 1.2rem;
+  }
+
+  .movie-details p {
+    font-size: 0.9rem;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  .pagination button,
+  .pagination span {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .pagination button {
+    width: auto;
+  }
+
+  .pagination span {
+    display: none;
+  }
+
+  .pagination-container {
+    padding: 0.5rem;
+  }
+}

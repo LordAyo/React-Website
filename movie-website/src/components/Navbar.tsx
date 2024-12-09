@@ -1,28 +1,30 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom"; // Add useLocation
 
 const Navbar: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const location = useLocation(); // Get current location
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     document.body.classList.toggle("dark-mode", !darkMode);
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   const getActiveClass = (path: string) => {
-    return window.location.pathname === path ? "active" : "";
+    return location.pathname === path ? "active" : "";
   };
 
   return (
     <nav className="navbar">
-      <a href="/" className="navbar-logo">
+      <Link to="/" className="navbar-logo">
         Movie Hub
-      </a>
-
+      </Link>
+      
       <div className="hamburger" onClick={toggleMenu}>
         <div className={`line ${isMenuOpen ? "open" : ""}`}></div>
         <div className={`line ${isMenuOpen ? "open" : ""}`}></div>
@@ -32,19 +34,14 @@ const Navbar: React.FC = () => {
       <div className={`menu ${isMenuOpen ? "open" : ""}`}>
         <ul className="navbar-links">
           <li>
-            <a href="/" className={getActiveClass("/")}>
+            <Link to="/" className={getActiveClass("/")}>
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/discover" className={getActiveClass("/discover")}>
-              Discover
-            </a>
-          </li>
-          <li>
-            <a href="/MovieDetails" className={getActiveClass("/discover")}>
-              Discover
-            </a>
+            <Link to="/watchlist" className={getActiveClass("/watchlist")}>
+              Watchlist
+            </Link>
           </li>
         </ul>
         <button className="navbar-toggle" onClick={toggleDarkMode}>

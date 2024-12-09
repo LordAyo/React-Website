@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import MovieDetails from "./pages/MovieDetails";
 import Navbar from "./components/Navbar";
-import Discover from "./pages/Discover";
+import WatchList from "./pages/WatchList";
 
 const App: React.FC = () => (
   <Router>
@@ -11,8 +11,7 @@ const App: React.FC = () => (
     <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/movie/:id" element={<MovieDetails />} />
-      <Route path="/discover" element={<Discover />} />
+      <Route path="/watchlist" element={<WatchList />} />
     </Routes>
   </Router>
 );
