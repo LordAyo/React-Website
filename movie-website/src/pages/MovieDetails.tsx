@@ -10,7 +10,7 @@ const MovieDetails: React.FC = () => {
   const fetchMovieDetails = async () => {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=YOUR_API_KEY`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=6acc04b6670a782c34026382251189e6`
       );
       setMovie(response.data);
     } catch (error) {
