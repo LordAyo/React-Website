@@ -41,6 +41,11 @@ const Navbar: React.FC = () => {
               Discover
             </a>
           </li>
+          <li>
+            <a href="/MovieDetails" className={getActiveClass("/discover")}>
+              Discover
+            </a>
+          </li>
         </ul>
         <button className="navbar-toggle" onClick={toggleDarkMode}>
           {darkMode ? "🌙 Dark" : "☀️ Light"}
