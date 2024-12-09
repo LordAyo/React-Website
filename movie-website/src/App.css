@@ -169,13 +169,29 @@ button:disabled {
 }
 
 @media (max-width: 480px) {
-  .pagination button {
+  .pagination {
+    flex-wrap: wrap; 
+    gap: 0.3rem; 
+    justify-content: center;
     font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
+  }
+
+  .pagination button,
+  .pagination span {
+    padding: 0.4rem 0.8rem; 
+    font-size: 0.8rem; 
+  }
+
+  .pagination button {
+    width: auto; 
   }
 
   .pagination span {
-    font-size: 0.9rem;
+    display: none; 
+  }
+
+  .pagination-container {
+    padding: 0.5rem; 
   }
 }
 
@@ -467,12 +483,13 @@ body {
 
 .navbar-toggle {
   background-color: white;
-  color: #3f51b5;
+  color: #6159ee;
   border: none;
   border-radius: 5px;
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-size: 1rem;
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -554,3 +571,41 @@ body.dark-mode .navbar-toggle:hover {
 .visible {
   display: block;
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-links.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: #3f51b5;
+    padding: 1rem;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 1000;
+  }
+
+  .movie-card {
+    height: 330px;
+  }
+
+  .movie-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
