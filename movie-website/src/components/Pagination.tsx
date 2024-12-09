@@ -9,11 +9,11 @@ interface PaginationProps {
 
 const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
   const handlePageClick = (data: { selected: number }) => {
-    onPageChange(data.selected + 1); // Adjust for 0-based index
+    onPageChange(data.selected + 1); // Adjust 0-based index to 1-based page numbering
   };
 
   return (
-    <div className="pagination">
+    <div className="pagination-container">
       <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}
@@ -22,11 +22,12 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handlePageClick}
-        containerClassName={"pagination-container"}
-        pageClassName={"pagination-page"}
-        activeClassName={"pagination-active"}
+        containerClassName={"pagination"}
+        pageClassName={"pagination-item"}
+        pageLinkClassName={"pagination-link"}
         previousClassName={"pagination-previous"}
         nextClassName={"pagination-next"}
+        activeClassName={"pagination-active"}
         disabledClassName={"pagination-disabled"}
       />
     </div>
