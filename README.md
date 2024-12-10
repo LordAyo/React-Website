@@ -11,3 +11,4 @@ Movie Hub is a web application that allows users to browse and search for movies
 - Light and dark mode toggle for user preferences.
 - Responsive design with a hamburger menu for smaller screens.
 
+HELPPPPPP
