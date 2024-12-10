@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/LordAyo.github.io/React-Website/static/css/main.dd555bc0.css",
+    "main.js": "/LordAyo.github.io/React-Website/static/js/main.cab5e72d.js",
+    "index.html": "/LordAyo.github.io/React-Website/index.html",
+    "main.dd555bc0.css.map": "/LordAyo.github.io/React-Website/static/css/main.dd555bc0.css.map",
+    "main.cab5e72d.js.map": "/LordAyo.github.io/React-Website/static/js/main.cab5e72d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dd555bc0.css",
+    "static/js/main.cab5e72d.js"
+  ]
+}
