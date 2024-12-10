@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/LordAyo.github.io/React-Website/static/css/main.dd555bc0.css",
-    "main.js": "/LordAyo.github.io/React-Website/static/js/main.cab5e72d.js",
-    "index.html": "/LordAyo.github.io/React-Website/index.html",
-    "main.dd555bc0.css.map": "/LordAyo.github.io/React-Website/static/css/main.dd555bc0.css.map",
-    "main.cab5e72d.js.map": "/LordAyo.github.io/React-Website/static/js/main.cab5e72d.js.map"
+    "main.css": "/React-Website/static/css/main.dd555bc0.css",
+    "main.js": "/React-Website/static/js/main.1ed162af.js",
+    "index.html": "/React-Website/index.html",
+    "main.dd555bc0.css.map": "/React-Website/static/css/main.dd555bc0.css.map",
+    "main.1ed162af.js.map": "/React-Website/static/js/main.1ed162af.js.map"
   },
   "entrypoints": [
     "static/css/main.dd555bc0.css",
-    "static/js/main.cab5e72d.js"
+    "static/js/main.1ed162af.js"
   ]
 }
